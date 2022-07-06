@@ -21,7 +21,10 @@ numbersKey.forEach(n =>{n.addEventListener("click", (e) =>{
             screenDisplay.innerText ='';
          break
          case "%":
-            screenDisplay.innerText = eval(screenDisplay.innerText/100);
+            screenDisplay.innerText = eval(screenDisplay.innerText/100)
+             if (screenDisplay.innerText.length > 10){
+                screenDisplay.innerText = (screenDisplay.innerText.slice(0,9)+"..");
+                 }
             break
             case "+/-":
             screenDisplay.innerText = eval(screenDisplay.innerText*-1);
