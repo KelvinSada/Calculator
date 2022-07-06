@@ -13,8 +13,8 @@ numbersKey.forEach(n =>{n.addEventListener("click", (e) =>{
 //     screenDisplay.innerText = screenDisplay.innerText.length(i);
 //    }
     
-      if (screenDisplay.innerText.length >= 11){
-        screenDisplay.innerText = (screenDisplay.innerText.slice(0,10));
+      if (screenDisplay.innerText.length >= 10){
+        screenDisplay.innerText = (screenDisplay.innerText.slice(0,9));
       }
      switch(e.target.innerText){
         case "AC":
@@ -30,7 +30,7 @@ numbersKey.forEach(n =>{n.addEventListener("click", (e) =>{
             try{
                 screenDisplay.innerText = eval(screenDisplay.innerText)
                 if (screenDisplay.innerText.length > 10){
-                screenDisplay.innerText = (screenDisplay.innerText.slice(0,10)+"..");
+                screenDisplay.innerText = (screenDisplay.innerText.slice(0,9)+"..");
                  }
                 }
             catch{
