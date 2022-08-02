@@ -12,18 +12,14 @@ numbersKey.forEach(n =>{n.addEventListener("click", (e) =>{
 //    for (i=screenDisplay.length;i>=10;i--){
 //     screenDisplay.innerText = screenDisplay.innerText.length(i);
 //    }
-    
-      if (screenDisplay.innerText.length >= 10){
-        screenDisplay.innerText = (screenDisplay.innerText.slice(0,9));
-      }
-     switch(e.target.innerText){
+  switch(e.target.innerText){
         case "AC":
             screenDisplay.innerText ='';
          break
          case "%":
             screenDisplay.innerText = eval(screenDisplay.innerText/100)
-             if (screenDisplay.innerText.length > 10){
-                screenDisplay.innerText = (screenDisplay.innerText.slice(0,9)+"..");
+            if (screenDisplay.innerText.length > 10){
+                screenDisplay.innerText = (screenDisplay.innerText.slice(0,10)+"..");
                  }
             break
             case "+/-":
@@ -32,8 +28,11 @@ numbersKey.forEach(n =>{n.addEventListener("click", (e) =>{
         case "=":
             try{
                 screenDisplay.innerText = eval(screenDisplay.innerText)
-                if (screenDisplay.innerText.length > 10){
-                screenDisplay.innerText = (screenDisplay.innerText.slice(0,9)+"..");
+                if (screenDisplay.innerText.length > 9 && screenDisplay.innerText.includes(".")){
+                    screenDisplay.innerText = (screenDisplay.innerText.slice(0,9));
+                }
+                 else if (screenDisplay.innerText.length > 9){
+                screenDisplay.innerText = (screenDisplay.innerText.slice(0,8)+"..");
                  }
                 }
             catch{
@@ -41,9 +40,17 @@ numbersKey.forEach(n =>{n.addEventListener("click", (e) =>{
             }
         break
         default:
-            screenDisplay.innerText+=e.target.innerText;
-     }  
-
+            screenDisplay.innerText+=e.target.innerText;                                      //to get only the textContent in the div,its better than this.innerHTML becasue it wont show you children div only text content
+            if (screenDisplay.innerText.length >= 9){
+                if(screenDisplay.innerText.includes("+") || screenDisplay.innerText.includes("-") || screenDisplay.innerText.includes("*")|| screenDisplay.innerText.includes("/")){
+                    screenDisplay.innerText = (screenDisplay.innerText.slice(0,11));
+                 }
+                 else{
+                    screenDisplay.innerText = (screenDisplay.innerText.slice(0,8));
+                 }
+              }
+     }    
+      
 })
 })
 // if(screenDisplay.innerText.length > 10){
